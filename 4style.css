@@ -1,0 +1,168 @@
+/* ===========================
+   SHOOTING STAR
+=========================== */
+
+.shooting-star{
+    position:fixed;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:white;
+    box-shadow:
+        0 0 10px white,
+        0 0 20px cyan;
+}
+
+.shooting-star::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:2px;
+    top:1px;
+    left:-120px;
+    background:linear-gradient(to right,
+        transparent,
+        rgba(255,255,255,.8));
+}
+
+/* ===========================
+   COMET
+=========================== */
+
+.comet{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:white;
+    box-shadow:
+        0 0 20px white,
+        0 0 40px cyan;
+}
+
+.comet::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:5px;
+    top:2px;
+    left:-180px;
+    border-radius:50px;
+    background:linear-gradient(to right,
+        transparent,
+        rgba(255,255,255,.9));
+}
+
+/* ===========================
+   BLACK HOLE
+=========================== */
+
+.black-hole{
+    position:absolute;
+    top:80px;
+    right:100px;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:radial-gradient(circle,#000,#111,#333);
+    box-shadow:
+        0 0 30px purple,
+        0 0 60px blue;
+    animation:blackHoleSpin 8s linear infinite;
+}
+
+@keyframes blackHoleSpin{
+    from{
+        transform:rotate(0deg) scale(1);
+    }
+    to{
+        transform:rotate(360deg) scale(1.1);
+    }
+}
+
+/* ===========================
+   SATELLITE
+=========================== */
+
+.satellite{
+    position:absolute;
+    font-size:15px;
+    animation:satelliteOrbit 6s linear infinite;
+}
+
+@keyframes satelliteOrbit{
+    from{
+        transform:rotate(0deg)
+                  translateX(35px)
+                  rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg)
+                  translateX(35px)
+                  rotate(-360deg);
+    }
+}
+
+/* ===========================
+   SPACESHIP
+=========================== */
+
+.spaceship{
+    position:fixed;
+    font-size:32px;
+    animation:shipFly 18s linear infinite;
+}
+
+@keyframes shipFly{
+    from{
+        transform:
+            translateX(-150px)
+            translateY(0);
+    }
+
+    to{
+        transform:
+            translateX(calc(100vw + 150px))
+            translateY(-120px);
+    }
+}
+
+/* ===========================
+   PLANET LABEL
+=========================== */
+
+.planet:hover::after{
+    content:attr(data-name);
+    position:absolute;
+    top:-28px;
+    left:-10px;
+    padding:4px 8px;
+    color:white;
+    background:rgba(0,0,0,.7);
+    border-radius:6px;
+    font-size:12px;
+    white-space:nowrap;
+}
+
+/* ===========================
+   SMOOTH ANIMATION
+=========================== */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    animation:spaceGlow 15s ease-in-out infinite;
+}
+
+@keyframes spaceGlow{
+
+    0%,100%{
+        filter:brightness(1);
+    }
+
+    50%{
+        filter:brightness(1.15);
+    }
+}
